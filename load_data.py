@@ -1,7 +1,6 @@
 import pandas as pd
 import urllib.request
 import numpy as np
-import matplotlib.pyplot as plt
 from IPython.display import display
 from zipfile import ZipFile
 

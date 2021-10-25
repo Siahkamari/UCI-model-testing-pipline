@@ -1,11 +1,6 @@
 import numpy as np
-import torch as th
-from tqdm.notebook import tqdm
 import time
 from load_data import load_data
-
-global device
-device = th.device("cuda:0" if th.cuda.is_available() else "cpu")
 
 def normalize_XX(X_train, X_test):
     mu = np.mean(X_train, axis=0)
