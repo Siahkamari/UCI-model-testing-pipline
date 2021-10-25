@@ -170,37 +170,6 @@ class load_data():
     y = df.iloc[:,-2:].to_numpy(dtype=np.float32)
     return y, X
   
-  def parkinson_multiple_sound_recording_reg(self):
-#     url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/00301/Parkinson_Multiple_Sound_Recording.rar'
-#     urllib.request.urlretrieve(url, 'data/regression/Parkinson_Multiple_Sound_Recording.rar')
-
-#     with RarFile('data/regression/Parkinson_Multiple_Sound_Recording.rar') as myzip:
-#       with myzip.open('train_data.txt') as myfile:
-#         df = pd.read_csv(myfile, header=None)
-#         # df.to_csv('data/regression/parkinson_multiple_sound_recording.csv')
-        
-    df = pd.read_csv('data/regression/parkinson_multiple_sound_recording.csv')
-    df.drop(columns=[df.columns[0],df.columns[-1]], inplace=True)
-#     one_hot = pd.get_dummies(df[df.columns[0]])
-#     df = pd.concat([df, one_hot], axis=1)
-    targets = df.columns[-1]
-    df['letter'] = [i%26 for i in range(df.shape[0])]
-    df = one_hot(df, ['letter'])
-    
-    df_train = df[ (df[df.columns[0]] %3 == 1) | (df[df.columns[0]] %3 == 2) ] 
-    df_test = df[ df[df.columns[0]] %3 == 0]
-
-    df_train = df_train.drop(df.columns[0], axis = 1)
-    df_test = df_test.drop(df.columns[0], axis = 1)
-
-    display(df_train.head())
-
-    X_train = df_train.drop(columns = targets).to_numpy(dtype=np.float32)
-    y_train = df_train[targets].to_numpy(dtype=np.float32)
-    X_test = df_test.drop(columns = targets).to_numpy(dtype=np.float32)
-    y_test = df_test[targets].to_numpy(dtype=np.float32)
-    return y_train, X_train, y_test, X_test
-  
   def parkinson_updrs(self):
     url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/parkinsons/telemonitoring/parkinsons_updrs.data'
     urllib.request.urlretrieve(url, 'data/regression/parkinsons_updrs.csv')
@@ -395,15 +364,15 @@ class load_data():
   
   def adult(self):
     url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data'
-    urllib.request.urlretrieve(url, 'data/classification/adult-data.csv')
+    urllib.request.urlretrieve(url, 'data/regression/adult-data.csv')
     url = "https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.test"
-    urllib.request.urlretrieve(url, 'data/classification/adult-data-test.csv')
+    urllib.request.urlretrieve(url, 'data/regression/adult-data-test.csv')
 
     col_names = ['age', 'workclass','fnlwgt','education','education-num','marital-status','occupation',
              'relationship','race','sex','capital-gain','capital-loss','hours-per-week','native-country','salary']
 
-    df = pd.read_csv('data/classification/adult-data.csv', header=None, names = col_names)
-    df_test = pd.read_csv('data/classification/adult-data-test.csv', header=None, names = col_names)
+    df = pd.read_csv('data/regression/adult-data.csv', header=None, names = col_names)
+    df_test = pd.read_csv('data/regression/adult-data-test.csv', header=None, names = col_names)
     df_test = df_test.drop(df_test.index[0])
 
     display(df.head())
