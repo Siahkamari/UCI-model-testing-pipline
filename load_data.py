@@ -411,7 +411,7 @@ class load_data():
     urllib.request.urlretrieve(url, 'data/classification/iris.csv')
 
     col_names = ['sepal length', 'sepal width', 'petal length', 'petal width', 'class']
-    df = pd.read_csv('data/classification/iris.csv',  names=col_names)
+    df = pd.read_csv('data/classification/iris.csv',  names=col_names, delimiter=',')
     display(df.head())
 
     X = df.drop(columns=['Iris-setosa']).to_numpy(dtype=np.float32)
