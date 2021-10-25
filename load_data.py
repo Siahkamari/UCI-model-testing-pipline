@@ -414,7 +414,7 @@ class load_data():
     df = pd.read_csv('data/classification/iris.csv',  names=col_names, delimiter=',')
     display(df.head())
 
-    X = df.drop(columns=['Iris-setosa']).to_numpy(dtype=np.float32)
+    X = df.drop(columns=['class']).to_numpy(dtype=np.float32)
     y = 2*(df['Iris-setosa'] == 'Iris-virginica') + (df['Iris-setosa'] == 'Iris-versicolor') + 1
     y = y.to_numpy(dtype=np.int32)
     return y, X
