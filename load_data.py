@@ -415,7 +415,7 @@ class load_data():
     display(df.head())
 
     X = df.drop(columns=['class']).to_numpy(dtype=np.float32)
-    y = 2*(df['Iris-setosa'] == 'Iris-virginica') + (df['Iris-setosa'] == 'Iris-versicolor') + 1
+    y = 2*(df['class'] == 'Iris-virginica') + (df['class'] == 'Iris-versicolor') + 1
     y = y.to_numpy(dtype=np.int32)
     return y, X
 
