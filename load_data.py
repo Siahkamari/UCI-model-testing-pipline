@@ -410,7 +410,8 @@ class load_data():
     url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
     urllib.request.urlretrieve(url, 'data/classification/iris.csv')
 
-    df = pd.read_csv('data/classification/iris.csv' ,delimiter=',')
+     col_names = ['sepal length', 'sepal width', 'petal length', 'petal width', 'class']
+    df = pd.read_csv('data/classification/iris.csv',  names=col_names)
     display(df.head())
 
     X = df.drop(columns=['Iris-setosa']).to_numpy(dtype=np.float32)
