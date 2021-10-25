@@ -26,8 +26,8 @@ def cross_validate(model, y, X, n_folds=5):
   n = X.shape[0]
 
   # Permute the rows of X and y
-  rng = th.Generator().manual_seed(0)
-  rp = th.randperm(n, generator=rng).cpu().numpy()
+  rng = np.random.default_rng(0)
+  rp = rng.permutation(n)
 
   # Initializing scores
   score_test = np.zeros(n_folds)
