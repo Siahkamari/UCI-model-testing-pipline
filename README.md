@@ -2,7 +2,7 @@
 This is a repository for testing regression and classification models based on UCI datasets
 
 
-# Prerequisite
+# Prerequisites
 python3
 
 import pandas as pd 
@@ -20,7 +20,7 @@ import time
 from sklearn.model_selection import GridSearchCV
 
 
-# Availble in this repository is two classes
+# Available in this repository is two classes
 ## 1. load_data(dataname)
 Given name a of a UCI dataset from a specified list, this class downloads, processes and returns the dataset in (X, y) or (X_train, y_train, X_test, y_test) with numpy format. The list of the availble datasets is in the example.ipynb. We plan to grow this list.
 ## 2. test(data_name, model_list, n_folds=5)
